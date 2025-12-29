@@ -4,11 +4,11 @@ Ten tutorial przeprowadzi Cię przez proces instalacji środowiska testowego crA
 
 ---
 
-## Część 1: Przygotowanie Środowiska (Setup)
+## Część 1: Przygotowanie Środowiska (Windows)
 
 Zanim zaczniesz hakować, musisz postawić "ofiarę" i przygotować "broń".
 
-### 1. Instalacja crAPI (Ofiara)
+### 1. Instalacja crAPI
 crAPI działa na Dockerze. Upewnij się, że masz zainstalowanego Dockera i Docker Compose.
 
 1.  **Pobierz repozytorium:**
