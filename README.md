@@ -4,7 +4,7 @@ Ten tutorial przeprowadzi Cię przez proces instalacji środowiska testowego crA
 
 ---
 
-## 🛠️ Część 1: Przygotowanie Środowiska (Setup)
+## Część 1: Przygotowanie Środowiska (Setup)
 
 Zanim zaczniesz hakować, musisz postawić "ofiarę" i przygotować "broń".
 
