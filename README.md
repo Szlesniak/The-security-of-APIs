@@ -47,16 +47,8 @@ Burp to proxy, które pozwala przechwytywać i modyfikować ruch między przegl�
 **Cel:** Zmiana nazwy wideo innego użytkownika.
 **Wyjaśnienie:** Serwer nie sprawdza, czy ID obiektu w URL należy do Ciebie.
 
-1.  Zaloguj się i wgraj jakiekolwiek wideo.
-2.  Kliknij edycję nazwy swojego wideo i przechwyć zapytanie w Burp Suite (**Proxy -> Intercept**).
-3.  Wyślij zapytanie do **Repeatera** (`Ctrl + R`).
-4.  Zauważ, że endpoint to `/workshop/api/v1/videos/{ID}` (ważne: musi to być `workshop`, a nie `identity`!).
-5.  Zmień ID w URL na ID innego użytkownika (np. `0` dla Admina lub inne istniejące ID).
-    ```http
-    PUT /workshop/api/v1/videos/0 HTTP/1.1
-    ...
-    {"videoName": "HackedByBOLA"}
-    ```
+1.  Zaloguj się
+2.  
 6.  **Sukces:** Jeśli otrzymasz status `200 OK`, zmieniłeś nazwę zasobu, do którego nie powinieneś mieć dostępu.
 
 ### 2. BFLA (Broken Function Level Authorization) - Challenge 7
