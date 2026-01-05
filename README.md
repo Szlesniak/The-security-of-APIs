@@ -74,15 +74,18 @@ Burp to proxy, które pozwala przechwytywać i modyfikować ruch między przegl�
 **Wyjaśnienie:** API nie blokuje konta po wielu nieudanych próbach wpisania kodu.
 
 1.  Na ekranie logowania wybierz "Forgot Password".
-2.  Podaj email ofiary (można go znaleźć w wyciekach danych w dashboardzie, np. `adam007@example.com`).
-3.  Gdy pojawi się prośba o OTP, wpisz losowy kod (np. `0000`) i przechwyć zapytanie w Burpie.
+2.  Podaj email ofiary (można go znaleźć w wyciekach danych w dashboardzie, np. `robot001@example.com`).
+3.  Gdy pojawi się prośba o OTP, zobacz w mailhogu jaki kod przyszedł i użyj OTP powiedzmy o 20 mniejszego niż prawdziwy OTP (ponieważ intruder działa zbyt powoli w wersji community aby złamać czterocyfrowy kod atakiem brute force) i przechwyć zapytanie w Burpie.
 4.  Wyślij do **Intrudera** (`Ctrl + I`).
-5.  W zakładce **Positions** zaznacz kod `0000` i kliknij `Add §`.
+5.  W zakładce **Positions** zaznacz twój kod np. `1200` i kliknij `Add §`.
 6.  W zakładce **Payloads**:
     * Payload type: **Numbers**.
-    * From: `0000`, To: `9999`.
+    * Min integer digits: **4**
+    * From: np. `1200`, To: `1221` (ważne, żeby prawdziwy kod był większy o więcej niż 10 niż punkt startowy).
 7.  Kliknij **Start Attack**.
-8.  **Sukces:** Obserwuj kolumnę "Length" lub "Status". Jeden request będzie inny (zwróci `200 OK` zamiast `500`). To jest poprawny kod OTP.
+8.  Po 10 zapytaniach ujrzysz kod `503` odpowiedzi i zobaczysz, na czym polega Rate Limiting.
+9.  Zmień URL `/identity/api/auth/v2/check-otp/` na `/identity/api/auth/v3/check-otp/`
+10.  **Sukces:** Obserwuj kolumnę "Length" lub "Status". Jeden request będzie inny (zwróci `200 OK` zamiast `500`). To jest poprawny kod OTP.
 
 ### 4. SSRF (Server Side Request Forgery)
 **Cel:** Zmuszenie serwera crAPI do połączenia się z wewnętrzną infrastrukturą (MailHog).
