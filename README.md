@@ -55,21 +55,21 @@ Burp to proxy, które pozwala przechwytywać i modyfikować ruch między przegl�
 5.  Wyślij to zapytanie do Repeatera - tam zmień w URLu zapytania vehicleid na to, którego szukasz.
 6.  **Sukces:** Jeśli otrzymasz status `200 OK`, zmieniłeś nazwę zasobu, do którego nie powinieneś mieć dostępu.
 
-### 2. BFLA (Broken Function Level Authorization) - Challenge 7
+### 2. BFLA (Broken Function Level Authorization)
 **Cel:** Usunięcie wideo innego użytkownika (funkcja administracyjna).
 **Wyjaśnienie:** Serwer nie sprawdza uprawnień (roli) dla ukrytych endpointów administracyjnych.
-
+0. Dodaj jakiekolwiek Wideo na stronę w zakładce My Profile.
 1.  Znajdź zapytanie edycji wideo (`PUT /identity/api/v2/user/videos/{ID}`).
 2.  Wyślij je do **Repeatera**.
 3.  Zmień metodę z `PUT` na `DELETE`.
 4.  Zmodyfikuj URL, zgadując endpoint admina (zamień `user` na `admin`):
     * Stary: `/identity/api/v2/user/videos/6`
-    * Nowy: `/identity/api/v2/admin/videos/0`
-    *(Celujemy w ID 0, żeby usunąć wideo systemowe/admina).*
+    * Nowy: `/identity/api/v2/admin/videos/5`
+    *(Celujemy w ID wokół naszego, żeby usunąć wideo innego użytkownika, bo tutaj id jest po prostu inkrementowane).*
 5.  Wyślij zapytanie.
 6.  **Sukces:** Status `200 OK` lub `204 No Content` oznacza, że zwykły użytkownik wykonał akcję admina.
 
-### 3. Rate Limiting (Broken User Authentication) - Challenge 3
+### 3. Rate Limiting (Broken User Authentication)
 **Cel:** Zresetowanie hasła innego użytkownika poprzez odgadnięcie OTP.
 **Wyjaśnienie:** API nie blokuje konta po wielu nieudanych próbach wpisania kodu.
 
@@ -84,7 +84,7 @@ Burp to proxy, które pozwala przechwytywać i modyfikować ruch między przegl�
 7.  Kliknij **Start Attack**.
 8.  **Sukces:** Obserwuj kolumnę "Length" lub "Status". Jeden request będzie inny (zwróci `200 OK` zamiast `500`). To jest poprawny kod OTP.
 
-### 4. SSRF (Server Side Request Forgery) - Challenge 8
+### 4. SSRF (Server Side Request Forgery)
 **Cel:** Zmuszenie serwera crAPI do połączenia się z wewnętrzną infrastrukturą (MailHog).
 **Wyjaśnienie:** Serwer ufa adresom URL podanym przez użytkownika i łączy się z nimi.
 
