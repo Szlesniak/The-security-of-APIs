@@ -1,6 +1,6 @@
 # Kompletny Przewodnik Hacking API: crAPI (Completely Ridiculous API)
 
-Ten tutorial przeprowadzi Cię przez proces instalacji środowiska testowego crAPI, konfigurację narzędzi hakerskich (Burp Suite) oraz wykonanie 5 kluczowych ataków na API (OWASP API Top 10).
+Ten tutorial przeprowadzi Cię przez proces instalacji środowiska testowego crAPI, konfigurację narzędzia Burp Suite oraz wykonanie 5 kluczowych ataków na API (OWASP API Top 10).
 
 ---
 
@@ -34,21 +34,25 @@ crAPI działa na Dockerze. Upewnij się, że masz zainstalowanego Dockera i Dock
 Dostęp do aplikacji: `http://localhost:8888`
 Dostęp do maili (MailHog): `http://localhost:8025`
 
-### 2. Konfiguracja Burp Suite (Broń)
+### 2. Konfiguracja Burp Suite
 Burp to proxy, które pozwala przechwytywać i modyfikować ruch między przeglądarką a serwerem.
 
 1.  **Pobierz:** Burp Suite Community Edition.
+2.  Polecam używać przeglądarki Burpa.
 
 ---
 
 ## Część 2: Ataki na API
 
-### 1. BOLA (Broken Object Level Authorization) - Challenge 5
-**Cel:** Zmiana nazwy wideo innego użytkownika.
+### 1. BOLA (Broken Object Level Authorization)
+**Cel:** Uzyskanie informacji o pojeździe innego użytkownika.
 **Wyjaśnienie:** Serwer nie sprawdza, czy ID obiektu w URL należy do Ciebie.
 
-1.  Zaloguj się
-2.  
+1.  Zarejestruj swoje konto.
+2.  Dodaj swój pojazd na głównej stronie.
+3.  W zakładce community odnajdź endpoint zwracający vehicleid innego użytkownika oraz je zapisz.
+4.  Przechwyć za pomocą proxy (Intercept on) zapytanie zwracające lokalizację twojego urządzenia.
+5.  Wyślij to zapytanie do Repeatera - tam zmień w URLu zapytania vehicleid na to, którego szukasz.
 6.  **Sukces:** Jeśli otrzymasz status `200 OK`, zmieniłeś nazwę zasobu, do którego nie powinieneś mieć dostępu.
 
 ### 2. BFLA (Broken Function Level Authorization) - Challenge 7
