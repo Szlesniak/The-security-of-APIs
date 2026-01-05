@@ -58,18 +58,18 @@ Burp to proxy, które pozwala przechwytywać i modyfikować ruch między przegl�
 ### 2. BFLA (Broken Function Level Authorization)
 **Cel:** Usunięcie wideo innego użytkownika (funkcja administracyjna).
 **Wyjaśnienie:** Serwer nie sprawdza uprawnień (roli) dla ukrytych endpointów administracyjnych.
-0. Dodaj jakiekolwiek Wideo na stronę w zakładce My Profile.
-1.  Znajdź zapytanie edycji wideo (`PUT /identity/api/v2/user/videos/{ID}`).
-2.  Wyślij je do **Repeatera**.
-3.  Zmień metodę z `PUT` na `DELETE`.
-4.  Zmodyfikuj URL, zgadując endpoint admina (zamień `user` na `admin`):
+1. Dodaj jakiekolwiek Wideo na stronę w zakładce "My Profile".
+2.  Znajdź zapytanie edycji wideo (`PUT /identity/api/v2/user/videos/{ID}`).
+3.  Wyślij je do **Repeatera**.
+4.  Zmień metodę z `PUT` na `DELETE`.
+5.  Zmodyfikuj URL, zgadując endpoint admina (zamień `user` na `admin`):
     * Stary: `/identity/api/v2/user/videos/6`
     * Nowy: `/identity/api/v2/admin/videos/5`
     *(Celujemy w ID wokół naszego, żeby usunąć wideo innego użytkownika, bo tutaj id jest po prostu inkrementowane).*
-5.  Wyślij zapytanie.
-6.  **Sukces:** Status `200 OK` lub `204 No Content` oznacza, że zwykły użytkownik wykonał akcję admina.
+6.  Wyślij zapytanie.
+7.  **Sukces:** Status `200 OK` lub `204 No Content` oznacza, że zwykły użytkownik wykonał akcję admina.
 
-### 3. Rate Limiting (Broken User Authentication)
+### 3. Omijanie Rate Limitingu (Broken User Authentication)
 **Cel:** Zresetowanie hasła innego użytkownika poprzez odgadnięcie OTP.
 **Wyjaśnienie:** API nie blokuje konta po wielu nieudanych próbach wpisania kodu.
 
