@@ -2,6 +2,8 @@
 Ten tutorial przeprowadzi Cię przez proces instalacji środowiska testowego crAPI, konfigurację narzędzia Burp Suite oraz wykonanie 5 kluczowych ataków na API (z listy OWASP API Top 10).
 ---
 [gitHub crAPI](https://github.com/OWASP/crAPI/tree/develop)
+
+[Link do prezentacji](https://docs.google.com/presentation/d/1dP_aNAPC6St8SABU-0TezcuhY-LOfGqTQju6BQkPiaI/edit?slide=id.g39205b843e3_3_0#slide=id.g39205b843e3_3_0)
 ## Część 1: Przygotowanie Środowiska (Windows)
 
 Zanim zaczniesz testy, musisz uruchomić aplikację i skonfigurować proxy.
