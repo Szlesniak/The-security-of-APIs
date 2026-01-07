@@ -133,4 +133,3 @@ Burp to proxy, które pozwala przechwytywać i modyfikować ruch między przegl�
 5.  **JWT:** Używaj silnych, losowych kluczy kryptograficznych (min. 256 bitów) i przechowuj je w bezpiecznym miejscu (Secrets Management), nigdy w kodzie źródłowym.
 
 ---
-*Tutorial stworzony w celach edukacyjnych. Testuj wyłącznie na własnym środowisku lokalnym.*
